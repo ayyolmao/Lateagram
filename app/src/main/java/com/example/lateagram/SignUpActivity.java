@@ -1,6 +1,5 @@
 package com.example.lateagram;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,13 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -50,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final String password2 = etPassword2.getText().toString();
                 final String email = etEmail.getText().toString();
 
-                if(!password.equals(password2)){
+                if (!password.equals(password2)) {
                     Toast.makeText(SignUpActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT);
                 } else {
                     signUp(username, password, email);
@@ -64,25 +58,11 @@ public class SignUpActivity extends AppCompatActivity {
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
-
-        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.instagram_user_outline_24)
-                + '/' + getResources().getResourceTypeName(R.drawable.instagram_user_outline_24) +
-                '/' + getResources().getResourceEntryName(R.drawable.instagram_user_outline_24) );
-        try {
-            InputStream stream = getContentResolver().openInputStream(imageUri);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        final ParseFile file = new ParseFile(new File(imageUri.getPath()));
-
-
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
-                if(e == null){
+                if (e == null) {
                     Log.d("SignUpActivity", "Signup successful.");
-                    user.put("profile_image", file);
                     Intent intent = new Intent(SignUpActivity.this, LateHome.class);
                     startActivity(intent);
                     finish();
@@ -106,5 +86,8 @@ public class SignUpActivity extends AppCompatActivity {
             if (cursor != null) {
                 cursor.close();
             }
-        }}
+        }
+    }
+
+
 }

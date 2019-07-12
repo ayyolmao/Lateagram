@@ -120,8 +120,6 @@ public class Posting extends AppCompatActivity {
         post.setKeyUser(parseUser);
         File photoFile = (File) getIntent().getSerializableExtra("image");
         post.setKeyImage(new ParseFile(photoFile));
-        ParseUser user = ParseUser.getCurrentUser();
-        user.put("emailVerified", false);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

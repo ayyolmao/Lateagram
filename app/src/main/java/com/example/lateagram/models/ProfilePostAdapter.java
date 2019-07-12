@@ -13,9 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.lateagram.LateHome;
 import com.example.lateagram.MainActivity;
 import com.example.lateagram.R;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -117,12 +119,23 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 ((LateHome) holder.itemView.getContext()).onPickPhoto(holder.itemView);
             }
         });
+
+        ParseUser user = ParseUser.getCurrentUser();
+        ParseFile file = user.getParseFile("profile_image");
+        if(file != null) {
+            Glide.with(vh1.itemView)
+                .load(file.getUrl())
+                    .transform(new CircleCrop())
+                .into(vh1.ivProfileImage);
+        }
     }
 
     private void configureViewHolder2(ViewHolder2 vh2, int position) {
-        Glide.with(vh2.itemView)
-                .load(((LatePost) items.get(position)).getKeyImage().getUrl())
-                .into(vh2.ivProfileImage);
+
+
+            Glide.with(vh2.itemView)
+                    .load(((LatePost) items.get(position)).getKeyImage().getUrl())
+                    .into(vh2.ivProfileImage);
 
     }
 

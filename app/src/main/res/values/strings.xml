@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lateagram</string>
+    <string name="title_activity_late_home">LateHome</string>
+    <string name="title_activity_home">activity_home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Photos</string>
+    <string name="title_notifications">Profile</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/topToolbar" layout="@layout/activity_home"/>
+
+    <include
+        android:id="@id/toolbar2"
+        layout="@layout/activity_home"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-304dp" />
+
+    <ImageView
+        android:id="@+id/ivMedia"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="12dp"
+        android:translationY="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/etCaption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/instagram_user_filled_24" />
+
+    <EditText
+        android:id="@+id/etCaption"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Write a caption..."
+        android:maxLength="2500"
+        android:translationY="350dp"
+        app:layout_constraintBottom_toTopOf="@+id/topToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
+        android:background="@color/greenteal"
+        android:onClick="sharePost"
+        android:text="Share"
+        android:translationY="350dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCaption" />
+
+</android.support.constraint.ConstraintLayout>
